@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Header Design</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0px;
+            color: #fff;
+            z-index: 1050 !important;
+            box-shadow: 0 5px 10px #0004;
+        }
+        .logo-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo img {
+            height: 30px;
+            width: 70px;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-btn {
+            background-color: rgba(255, 51, 0, 0.6);
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: 900;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .dropdown-btn:hover {
+            background-color: rgba(255, 51, 0, 0.4);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+            height: auto;
+            opacity: 50%;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: rgba(255, 51, 0, 0.4);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 17px;
+            font-weight: bold;
+            text-shadow: 0 5px 10px #0004;
+        }
+        .nav a:hover {
+            color: rgba(255, 51, 0, 0.6);
+        }
+        .login-btn {
+            padding: 10px 20px;
+            background-color: rgba(255, 51, 0, 0.6);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: rgba(255, 51, 0, 0.4);
+        }
+        .slider_container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            margin-top: -55px;
+        }
+        .slider_wrapper {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .slider {
+            display: flex;
+            aspect-ratio: 16 / 9;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+        }
+        .slider img {
+            flex: 1 0 100%;
+            scroll-snap-align: start;
+            width: 100%;
+            height: 100%;
+        }
+        .slider_nav {
+            display: flex;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .slider_nav a {
+            position: relative;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 51, 0, 1);
+            opacity: 0.75;
+            transition: opacity ease 250ms;
+            z-index: 10;
+        }
+        .slider_nav a:hover {
+            opacity: 1;
+        }
+        .reservation-wrapper {
+            background-color: transparent;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+            margin: auto;
+            padding: 10px;
+            width: 80%;
+            box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+        }
+        .reservation-wrapper h1 {
+            padding-top: 20px;
+            font-size: 36px;
+            text-align: center;
+            color: #fff;
+        }
+        .pickup-input {
+            display: flex;
+            padding: 10px 10px;
+            margin: 10px 0;
+        }
+        .box1 {
+            height: 40px;
+            width: 100%;
+            border-radius: 50px;
+        }
+        .box1 input {
+            position: relative;
+            color: #fff;
+            width: 92%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            padding: 5px 5px 5px 15px;
+        }
+        .location-input {
+            display: flex;
+            padding: 10px 10px;
+            margin: 10px 0;
+            color: #fff;
+        }
+        .box2 {
+            height: 40px;
+            width: 100%;
+            border-radius: 50px;
+        }
+        .box2 input {
+            position: relative;
+            width: 96%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            padding: 5px 5px 5px 15px;
+        }
+        .personal-input {
+            display: flex;
+            padding: 10px 10px;
+            margin: 10px 0;
+        }
+        .box3 {
+            height: 40px;
+            width: 100%;
+            border-radius: 50px;
+        }
+        .box3 input {
+            position: relative;
+            width: 88%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            padding: 5px 5px 5px 15px;
+        }
+        .button {
+            display: flex;
+            padding: 10px 10px;
+            margin: 10px 0;
+            justify-content: center;
+        }
+        .button1 {
+            width: 150px;
+            height: 45px;
+            border-radius: 50px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 30px;
+            background-color: rgba(255, 51, 0, 0.6);
+            border: none;
+            cursor: pointer;
+        }
+        .button1:hover {
+
+        }
+        ::placeholder {
+            color: #fff;
+        }
+        .line {
+            margin: auto;
+            height: 5px;
+            width: 60%;
+            background-color: orangered;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 0 0 40px;
+            color: #fff;
+            text-shadow: 0 5px 10px #0004;
+        }
+        .car-wrapper {
+            display: flex;
+            justify-content: center;
+            background-color: #FFFDD0;
+        }
+
+        .car-wrapper-col {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .car-wrapper-row {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .cars {
+            height: 180px;
+            width: 320px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body style="background-color: grey !important;">
+    <header class="header">
+        <div class="logo-dropdown">
+            <div class="logo">
+                <img src="logo1 (1).png" alt="Company Logo">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-btn">☰</button>
+                <div class="dropdown-content">
+                    <a href="About Us.html">About Us</a>
+                    <a href="Contacts.html">Contacts</a>
+                    <a href="Reviews.html">Reviews</a>
+                </div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="deals.html">Deals</a>
+            <a href="vehicles.html">Vehicles</a>
+            <a href="location.html">Location</a>
+        </nav>
+        <button class="login-btn">Sign In / Login</button>
+    </header>
+    <section class="slider_container">
+        <div class="slider_wrapper">
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-slide="5000">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="christmass advertisment.png" alt="Los Angeles" class="d-block" style="width:100%; height: 100vh;">
+      </div>
+          <div class="carousel-item">
+            <img src="Add1.png" alt="Chicago" class="d-block" style="width:100%; height: 100vh;">
+      </div>
+          <div class="carousel-item">
+            <img src="ad2.jpg" alt="New York" class="d-block" style="width:100%; height: 100vh;">
+      </div>
+</div>
+
+    <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+        </button>
+  </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <div class="line"></div>
+    <br>
+    <br>
+    <br>
+        <div class = "SUV">
+            <h1>SUV</h1>
+            <div class = "car-wrapper-row">
+                <div class="cars"><img src="landcruiser.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="explorer.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="trailblazer.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="bmwx1.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="fortuner.png" height="180px" width="320px"></div>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <div class="line"></div>
+    <br>
+    <br>
+    <br>
+        <div class = "SEDAN">
+            <h1>SEDAN</h1>
+            <div class = "car-wrapper-row">
+                <div class="cars"><img src="vios.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="civic.jpg" height="180px" width="320px"></div>
+                <div class="cars"><img src="soluto.jpg" height="180px" width="320px"></div>
+                <div class="cars"><img src="wigo.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="s_450.png" height="180px" width="320px"></div>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <div class="line"></div>
+    <br>
+    <br>
+    <br>
+        <div class = "VAN">
+            <h1>VAN</h1>
+            <div class = "car-wrapper-row">
+                <div class="cars"><img src="sgrandia.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="urvan.jpg" height="180px" width="320px"></div>
+                <div class="cars"><img src="alphard.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="avantgarde.png" height="180px" width="320px"></div>
+                <div class="cars"><img src="carnival.jpg" height="180px" width="320px"></div>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <div class="line"></div>
+
+    </div>
+</body>
+</html>
